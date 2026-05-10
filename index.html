@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luan Estifer | Software Engineer & AI Builder</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <style>
         :root {
-            --bg-dark: #050505;
-            --bg-card: rgba(22, 22, 22, 0.7);
-            --text-main: #f0f0f0;
-            --text-muted: #94a3b8;
-            --accent: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.3);
-            --border: rgba(255, 255, 255, 0.1);
-            --glass: rgba(255, 255, 255, 0.03);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-base: #09090b;
+            --bg-panel: #111113;
+            --bg-elevated: #141416;
+            --border: #27272a;
+            --text-main: #fafafa;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --accent: #cc1100;
+            --transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -27,23 +26,22 @@
             box-sizing: border-box;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
+            background: var(--bg-base);
         }
         ::-webkit-scrollbar-thumb {
-            background: #222;
-            border-radius: 10px;
+            background: var(--border);
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent);
+            background: #3f3f46;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-base);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
@@ -51,152 +49,204 @@
             overflow-x: hidden;
         }
 
-        /* Progress Bar */
-        #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--accent);
-            width: 0%;
-            z-index: 1000;
-            box-shadow: 0 0 15px var(--accent);
-            transition: width 0.1s ease;
-        }
-
         .mono {
             font-family: 'Fira Code', monospace;
         }
 
-        .neon-text {
+        .accent-text {
             color: var(--accent);
-            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s linear;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 24px;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: var(--transition);
+            transition: color var(--transition);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 0;
+            padding: 20px 0;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(15px);
+            background: var(--bg-base);
             z-index: 900;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
         }
 
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
         .social-links a {
-            color: var(--text-main);
-            margin-left: 20px;
-            font-size: 1.2rem;
-            transition: 0.3s;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-panel);
         }
 
         .social-links a:hover {
             color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .social-links svg {
+            width: 16px;
+            height: 16px;
         }
 
         .hero {
-            min-height: 85vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            text-align: left;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            line-height: 1.1;
-            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .hero p {
             color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 40px;
-            font-size: 1.2rem;
+            max-width: 560px;
+            font-size: 1.05rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-avatar {
+            position: relative;
+            justify-self: center;
+            width: min(100%, 420px);
+            aspect-ratio: 1 / 1;
+            will-change: transform;
+            filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.55));
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: -14%;
+            background: radial-gradient(circle at 50% 44%, rgba(204, 17, 0, 0.22), transparent 62%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-avatar .pose {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 150ms ease-out;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-avatar .pose.on {
+            opacity: 1;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             background: var(--accent);
-            color: var(--bg-dark);
-            padding: 14px 32px;
-            font-weight: 800;
-            border-radius: 8px;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.9rem;
+            color: #09090b;
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all var(--transition);
+            font-size: 0.85rem;
             border: none;
             cursor: pointer;
+            font-family: 'Inter', sans-serif;
         }
 
         .btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
             filter: brightness(1.1);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            margin-left: 15px;
+            border: 1px solid var(--border);
+            color: var(--text-main);
         }
 
         .btn-outline:hover {
-            background: rgba(0, 255, 136, 0.1);
-        }
-
-        /* Background Blobs */
-        .blob {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: var(--accent);
-            filter: blur(150px);
-            opacity: 0.05;
-            border-radius: 50%;
-            z-index: -1;
-            pointer-events: none;
-            animation: move 20s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-20%, -20%); }
-            to { transform: translate(20%, 20%); }
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(204, 17, 0, 0.05);
         }
 
         .section-padding {
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
             display: flex;
             align-items: center;
         }
@@ -206,75 +256,74 @@
             color: var(--accent);
             margin-right: 10px;
             font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
         }
 
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
         }
 
         .tech-card {
-            background: var(--bg-card);
+            background: var(--bg-panel);
             border: 1px solid var(--border);
-            padding: 30px 20px;
+            padding: 24px 16px;
             text-align: center;
-            border-radius: 12px;
-            transition: var(--transition);
-            backdrop-filter: blur(5px);
+            border-radius: 6px;
+            transition: border-color var(--transition), background var(--transition);
         }
 
         .tech-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-8px);
-            background: rgba(0, 255, 136, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+            border-color: #3f3f46;
+            background: var(--bg-elevated);
         }
 
-        .tech-card i {
-            font-size: 3rem;
-            margin-bottom: 15px;
+        .tech-card svg {
+            width: 20px;
+            height: 20px;
             color: var(--text-muted);
-            transition: var(--transition);
+            margin-bottom: 10px;
         }
 
-        .tech-card:hover i {
+        .tech-card:hover svg {
             color: var(--accent);
-            transform: scale(1.1);
+        }
+
+        .tech-card h3 {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 16px;
             margin-bottom: 60px;
         }
 
         .project-card {
-            background: var(--bg-card);
+            background: var(--bg-panel);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 6px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
+            transition: border-color var(--transition);
         }
 
         .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 136, 0.1);
+            border-color: #3f3f46;
         }
 
         .project-img {
-            background: #111;
-            height: 220px;
+            background: var(--bg-base);
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid var(--border);
-            position: relative;
             overflow: hidden;
         }
 
@@ -282,25 +331,19 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
         }
 
         .project-content {
-            padding: 30px;
+            padding: 24px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
-        /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
         .reveal.active {
@@ -309,97 +352,128 @@
         }
 
         .project-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.25rem;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .project-content p {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             flex-grow: 1;
         }
 
-        /* Archive Section */
+        .tag {
+            font-size: 0.7rem;
+            font-family: 'Fira Code', monospace;
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .link-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .link-row svg {
+            width: 16px;
+            height: 16px;
+        }
+
         .archive-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 16px;
         }
 
         .filter-container {
             display: flex;
-            gap: 10px;
-            background: #111;
-            padding: 5px;
-            border-radius: 8px;
+            gap: 4px;
+            background: var(--bg-panel);
+            padding: 4px;
+            border-radius: 6px;
             border: 1px solid var(--border);
         }
 
         .filter-btn {
             background: transparent;
             border: none;
-            color: var(--text-muted);
-            padding: 8px 15px;
+            color: var(--text-dim);
+            padding: 6px 12px;
             cursor: pointer;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
             font-family: 'Fira Code', monospace;
-            transition: 0.2s;
+            transition: all var(--transition);
+        }
+
+        .filter-btn:hover {
+            color: var(--text-muted);
         }
 
         .filter-btn.active {
             background: var(--accent);
-            color: var(--bg-dark);
+            color: #09090b;
             font-weight: 600;
         }
 
         .search-container {
             position: relative;
             flex-grow: 1;
-            max-width: 400px;
+            max-width: 360px;
         }
 
-        .search-container i {
+        .search-container svg {
             position: absolute;
-            left: 15px;
+            left: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-muted);
+            color: var(--text-dim);
+            width: 16px;
+            height: 16px;
+            pointer-events: none;
         }
 
         .search-input {
             width: 100%;
-            background: #111;
+            background: var(--bg-panel);
             border: 1px solid var(--border);
-            padding: 12px 15px 12px 45px;
-            border-radius: 8px;
+            padding: 8px 12px 8px 36px;
+            border-radius: 6px;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
             outline: none;
-            transition: 0.3s;
+            transition: border-color var(--transition);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-dim);
         }
 
         .search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+            border-color: #3f3f46;
         }
 
         .archive-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
         }
 
         .archive-card {
-            background: #111;
+            background: var(--bg-panel);
             border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 10px;
-            transition: 0.3s;
+            padding: 16px;
+            border-radius: 6px;
+            transition: border-color var(--transition);
             display: flex;
             flex-direction: column;
             text-decoration: none;
@@ -407,21 +481,20 @@
         }
 
         .archive-card:hover {
-            border-color: var(--accent);
-            background: #161616;
-            transform: translateY(-3px);
+            border-color: #3f3f46;
         }
 
         .archive-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: white;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            font-weight: 600;
         }
 
         .archive-card p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -432,186 +505,259 @@
             margin-top: auto;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .archive-card .tech-tag {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3px 8px;
+            font-size: 0.65rem;
+            font-family: 'Fira Code', monospace;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 2px 8px;
             border-radius: 4px;
             color: var(--accent);
-        }
-
-        .tag {
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-family: 'Fira Code', monospace;
-            margin-right: 10px;
         }
 
         .resume-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
+            gap: 32px;
+            margin-bottom: 40px;
         }
 
         .resume-column h3 {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .resume-column h3 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
         }
 
         .resume-item {
-            border-left: 2px solid var(--border);
-            padding-left: 25px;
-            margin-bottom: 30px;
+            border-left: 1px solid var(--border);
+            padding-left: 20px;
+            margin-bottom: 24px;
             position: relative;
         }
 
         .resume-item::before {
             content: '';
             position: absolute;
-            left: -6px;
+            left: -4px;
             top: 0;
-            width: 10px;
-            height: 10px;
+            width: 7px;
+            height: 7px;
             background: var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
         }
 
         .resume-date {
             font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--accent);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             display: block;
         }
 
         .resume-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 5px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 2px;
         }
 
         .resume-place {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             font-style: italic;
         }
 
         .resume-desc {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 6px;
         }
 
         .download-cta {
             text-align: center;
-            background: linear-gradient(180deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
-            padding: 60px;
+            background: var(--bg-panel);
+            padding: 48px;
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 6px;
         }
 
         footer {
-            padding: 50px 0;
+            padding: 40px 0;
             text-align: center;
             border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            margin-top: 50px;
+            color: var(--text-dim);
+            margin-top: 40px;
         }
 
-        /* SEÇÃO DE XADREZ */
+        footer svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+
         .chess-section {
             display: grid;
-            grid-template-columns: 1.5fr 1fr; /* Texto na esquerda, ícone na direita */
-            gap: 40px;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 32px;
             align-items: center;
-            background: linear-gradient(45deg, var(--bg-card), #111);
+            background: var(--bg-panel);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 40px;
-            margin-top: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Efeito de brilho verde atrás */
-        .chess-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            filter: blur(100px);
-            opacity: 0.1;
-            border-radius: 50%;
+            border-radius: 6px;
+            padding: 32px;
+            margin-top: 48px;
         }
 
         .chess-icon-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 8rem; /* Ícone gigante */
-            color: var(--bg-dark);
-            text-shadow: -1px -1px 0 var(--accent),
-            1px -1px 0 var(--accent),
-            -1px 1px 0 var(--accent),
-            1px 1px 0 var(--accent); /* Cria apenas a borda neon */
-            animation: float 4s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
+        .chess-icon-container svg {
+            width: 80px;
+            height: 80px;
+            color: var(--accent);
+            opacity: 0.15;
         }
 
         .chess-badge {
-            display: inline-block;
-            background: rgba(0, 255, 136, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(204, 17, 0, 0.06);
             color: var(--accent);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
             font-weight: 600;
-            margin-bottom: 15px;
-            border: 1px solid var(--accent);
+            margin-bottom: 12px;
+            border: 1px solid rgba(204, 17, 0, 0.15);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .chess-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .checklist-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .contact-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 48px;
+            text-align: center;
+        }
+
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-actions svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .contact-meta {
+            margin-top: 32px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .contact-meta svg {
+            width: 14px;
+            height: 14px;
+            color: var(--accent);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            filter: brightness(1.1);
         }
 
         @media (max-width: 768px) {
-            .chess-section {
-                grid-template-columns: 1fr;
+            .hero {
+                min-height: 70vh;
                 text-align: center;
             }
-        }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .hero-avatar {
+                order: -1;
+                width: min(72%, 280px);
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .hero p {
+                margin: 0 auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
             }
 
             .resume-container {
                 grid-template-columns: 1fr;
             }
 
+            .chess-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .chess-icon-container {
+                display: none;
+            }
+
             .btn-outline {
                 margin-left: 0;
-                margin-top: 10px;
-                display: block;
-                text-align: center;
             }
 
             .archive-header {
@@ -622,36 +768,57 @@
             .search-container {
                 max-width: none;
             }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 <div id="progress-bar"></div>
-<div class="blob" style="top: -100px; left: -100px;"></div>
-<div class="blob" style="bottom: -100px; right: -100px; animation-delay: -10s;"></div>
-<div class="blob" style="top: 40%; left: 60%; width: 300px; height: 300px; opacity: 0.03; animation-duration: 30s;"></div>
 
 <div class="container">
     <nav>
-        <div class="logo mono">Luan.<span class="neon-text">py</span></div>
+        <div class="logo mono">Luan.<span class="accent-text">py</span></div>
         <div class="social-links">
-            <a href="https://github.com/Zsubzeroz" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/luanestifer" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/5519997222694" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:luanestiferpy@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/Zsubzeroz" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/luanestifer" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://wa.me/5519997222694" target="_blank" aria-label="WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+            <a href="mailto:luanestiferpy@gmail.com" aria-label="E-mail">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
         </div>
     </nav>
 
     <section class="hero reveal">
-        <div>
-            <p class="mono neon-text">Engenheiro de Software & AI Builder</p>
-            <h1><span id="typing-text"></span><br> <span class="neon-text">Soluções Escaláveis</span></h1>
-            <p>Transformando dados industriais e processos manuais em automações escaláveis com Python, C# e IA Generativa.</p>
-            <div style="margin-top: 30px;">
-                <a href="#projects" class="btn">Explorar Projetos</a>
-                <a href="./assets/docs/CV - Luan Estifer Rodrigues Pereira - Software Engineer.pdf" download class="btn btn-outline">
-                    <i class="fas fa-file-download"></i> &nbsp; Baixar CV (PDF)
-                </a>
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="hero-subtitle">Engenheiro de Software & AI Builder</p>
+                <h1><span id="typing-text"></span><br><span class="accent-text">Soluções Escaláveis</span></h1>
+                <p>Transformando dados industriais e processos manuais em automações escaláveis com Python, C# e IA Generativa.</p>
+                <div class="hero-actions" style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="#projects" class="btn">Explorar Projetos</a>
+                    <a href="./assets/docs/CV - Luan Estifer Rodrigues Pereira - Software Engineer.pdf" download class="btn btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        Baixar CV
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-avatar" id="hero-avatar" role="img" aria-label="Retrato de Luan Estifer seguindo o cursor">
+                <span class="avatar-glow"></span>
+                <img class="pose on" data-pose="N" src="assets/images/avatar/sprite_N.png" alt="" draggable="false">
+                <img class="pose" data-pose="U" src="assets/images/avatar/sprite_U.png" alt="" draggable="false">
+                <img class="pose" data-pose="D" src="assets/images/avatar/sprite_D.png" alt="" draggable="false">
+                <img class="pose" data-pose="L" src="assets/images/avatar/sprite_L.png" alt="" draggable="false">
+                <img class="pose" data-pose="R" src="assets/images/avatar/sprite_R.png" alt="" draggable="false">
             </div>
         </div>
     </section>
@@ -659,133 +826,158 @@
     <section class="section-padding reveal">
         <h2 class="section-title">Stack Tecnológica</h2>
         <div class="tech-grid">
-            <div class="tech-card"><i class="fab fa-python"></i>
-                <h3>Python</h3></div>
-            <div class="tech-card"><i class="fas fa-layer-group"></i>
-                <h3>Django</h3></div>
-            <div class="tech-card"><i class="fas fa-database"></i>
-                <h3>SQL / ORM</h3></div>
-            <div class="tech-card"><i class="fab fa-react"></i>
-                <h3>React</h3></div>
-            <div class="tech-card"><i class="fab fa-git-alt"></i>
-                <h3>Git</h3></div>
-            <div class="tech-card"><i class="fas fa-terminal"></i>
-                <h3>Linux</h3></div>
+            <div class="tech-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <h3>Python</h3>
+            </div>
+            <div class="tech-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+                <h3>Django</h3>
+            </div>
+            <div class="tech-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+                <h3>SQL / ORM</h3>
+            </div>
+            <div class="tech-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/><circle cx="5" cy="8.5" r="1"/><circle cx="19" cy="8.5" r="1"/><circle cx="5" cy="15.5" r="1"/><circle cx="19" cy="15.5" r="1"/><line x1="5.5" y1="8" x2="12" y2="5"/><line x1="12" y1="19" x2="18.5" y2="16"/><line x1="5.5" y1="16" x2="12" y2="19"/><line x1="12" y1="5" x2="18.5" y2="8"/></svg>
+                <h3>React</h3>
+            </div>
+            <div class="tech-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="6"/><line x1="12" x2="12" y1="18" y2="22"/><line x1="4.93" x2="7.76" y1="4.93" y2="7.76"/><line x1="16.24" x2="19.07" y1="16.24" y2="19.07"/><line x1="2" x2="6" y1="12" y2="12"/><line x1="18" x2="22" y1="12" y2="12"/><line x1="4.93" x2="7.76" y1="19.07" y2="16.24"/><line x1="16.24" x2="19.07" y1="7.76" y2="4.93"/></svg>
+                <h3>Git</h3>
+            </div>
+            <div class="tech-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+                <h3>Linux</h3>
+            </div>
         </div>
     </section>
 </div>
 
-
-<div style="background-color: #0f0f0f; width: 100%;">
+<div style="background-color: #0f0f0f; width: 100%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
         <section id="projects" class="section-padding reveal">
             <h2 class="section-title">Projetos Selecionados</h2>
 
             <div class="project-grid">
-                <!-- Project 1: StudyFlow AI -->
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/studyflow_ai.png" alt="StudyFlow AI">
                     </div>
                     <div class="project-content">
-                        <h3 class="mono neon-text">01. StudyFlow AI</h3>
+                        <h3 class="mono accent-text">01. StudyFlow AI</h3>
                         <p><strong>O Problema:</strong> Dificuldade em organizar e extrair conhecimento de grandes volumes de PDFs de estudo.</p>
                         <p><strong>Resultado:</strong> Plataforma que automatiza a criação de flashcards e simulados usando IA Generativa e repetição espaçada.</p>
-                        <div style="margin-bottom: 20px;">
+                        <div style="margin-bottom: 16px;">
                             <span class="tag">JavaScript</span><span class="tag">AI</span><span class="tag">Education</span>
                         </div>
-                        <a href="https://github.com/Zsubzeroz/studyflow-ai" target="_blank" class="neon-text"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/Zsubzeroz/studyflow-ai" target="_blank" class="link-row accent-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Ver Código
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 2: Kitchen Manager -->
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/projeto2.png" alt="Kitchen Manager">
                     </div>
                     <div class="project-content">
-                        <h3 class="mono neon-text">02. Kitchen Manager</h3>
+                        <h3 class="mono accent-text">02. Kitchen Manager</h3>
                         <p><strong>O Problema:</strong> Caos operacional e falta de rastreabilidade em cozinhas de alta demanda.</p>
                         <p><strong>Resultado:</strong> API REST que gerencia todo o fluxo de pedidos e insumos, otimizando o tempo de entrega e controle de estoque.</p>
-                        <div style="margin-bottom: 20px;">
+                        <div style="margin-bottom: 16px;">
                             <span class="tag">Python</span><span class="tag">Django</span><span class="tag">REST API</span>
                         </div>
-                        <a href="https://github.com/Zsubzeroz/cozinha-restaurante" target="_blank" class="neon-text"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/Zsubzeroz/cozinha-restaurante" target="_blank" class="link-row accent-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Ver Código
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 3: Chess Strategy -->
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/chess_strategy.png" alt="Chess Strategy">
                     </div>
                     <div class="project-content">
-                        <h3 class="mono neon-text">03. Xadrez Chess</h3>
+                        <h3 class="mono accent-text">03. Xadrez Chess</h3>
                         <p><strong>O Problema:</strong> Necessidade de validar algoritmos de lógica complexa em tempo real sob regras internacionais.</p>
                         <p><strong>Resultado:</strong> Engine de xadrez completa com interface interativa e detecção automática de jogadas especiais.</p>
-                        <div style="margin-bottom: 20px;">
+                        <div style="margin-bottom: 16px;">
                             <span class="tag">JavaScript</span><span class="tag">Logic</span><span class="tag">Game Dev</span>
                         </div>
-                        <a href="https://github.com/Zsubzeroz/Xadrez-Chess" target="_blank" class="neon-text"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/Zsubzeroz/Xadrez-Chess" target="_blank" class="link-row accent-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Ver Código
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 4: Taxi Service Auth -->
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/taxi_auth.png" alt="Taxi Service Auth">
                     </div>
                     <div class="project-content">
-                        <h3 class="mono neon-text">04. Taxi Service Auth</h3>
-                        <p>Serviço de autenticação seguro baseado em JWT para aplicações de transporte, com registro e login de usuários.</p>
-                        <div style="margin-bottom: 20px;">
+                        <h3 class="mono accent-text">04. Taxi Service Auth</h3>
+                        <p><strong>O Problema:</strong> Vulnerabilidade em sistemas de transporte que exigem alta segurança e controle de sessão.</p>
+                        <p><strong>Resultado:</strong> Módulo de autenticação robusto com JWT, garantindo criptografia de ponta a ponta e gestão de usuários escalável.</p>
+                        <div style="margin-bottom: 16px;">
                             <span class="tag">Python</span><span class="tag">JWT</span><span class="tag">Security</span>
                         </div>
-                        <a href="https://github.com/Zsubzeroz/py-taxi-service-authentication" target="_blank" class="neon-text"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/Zsubzeroz/py-taxi-service-authentication" target="_blank" class="link-row accent-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Ver Código
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 5: Piano Maestro Virtual -->
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/piano_maestro.png" alt="Piano Maestro Virtual">
                     </div>
                     <div class="project-content">
-                        <h3 class="mono neon-text">05. Piano Maestro Virtual</h3>
-                        <p>Sistema de auxílio ao estudo de piano, focado em organização de rotina e superação de dificuldades técnicas.</p>
-                        <div style="margin-bottom: 20px;">
+                        <h3 class="mono accent-text">05. Piano Maestro Virtual</h3>
+                        <p><strong>O Problema:</strong> Falta de acompanhamento estruturado e gamificado para o aprendizado autodidata de piano.</p>
+                        <p><strong>Resultado:</strong> Aplicação interativa que organiza a rotina de estudos, superando barreiras técnicas através de feedback visual.</p>
+                        <div style="margin-bottom: 16px;">
                             <span class="tag">JavaScript</span><span class="tag">Music Tech</span><span class="tag">Auth</span>
                         </div>
-                        <a href="https://github.com/Zsubzeroz/Piano-Maestro-Virtual" target="_blank" class="neon-text"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/Zsubzeroz/Piano-Maestro-Virtual" target="_blank" class="link-row accent-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Ver Código
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 6: Portfolio -->
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/projeto1.png" alt="Portfolio">
                     </div>
                     <div class="project-content">
-                        <h3 class="mono neon-text">06. Personal Portfolio</h3>
-                        <p>Este portfólio, desenvolvido para apresentar projetos de software, habilidades técnicas e trajetória profissional.</p>
-                        <div style="margin-bottom: 20px;">
+                        <h3 class="mono accent-text">06. Personal Portfolio</h3>
+                        <p><strong>O Problema:</strong> Necessidade de uma identidade digital profissional que transmita autoridade técnica e visão estratégica.</p>
+                        <p><strong>Resultado:</strong> Dashboard interativo com vitrine de projetos, arquivo dinâmico e design focado em conversão de marca pessoal.</p>
+                        <div style="margin-bottom: 16px;">
                             <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">UI/UX</span>
                         </div>
-                        <a href="https://github.com/Zsubzeroz/Portfolio" target="_blank" class="neon-text"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/Zsubzeroz/Portfolio" target="_blank" class="link-row accent-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Ver Código
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Repository Archive -->
             <div class="archive-header">
                 <h2 class="section-title" style="margin-bottom: 0;">Arquivo de Repositórios</h2>
                 <div class="search-container">
-                    <i class="fas fa-search"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     <input type="text" id="repo-search" class="search-input" placeholder="Buscar projeto ou tecnologia...">
                 </div>
             </div>
 
-            <div class="filter-container" style="margin-bottom: 30px;">
+            <div class="filter-container" style="margin-bottom: 24px;">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="Python">Python</button>
                 <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
@@ -793,19 +985,17 @@
                 <button class="filter-btn" data-filter="Outros">Outros</button>
             </div>
 
-            <div id="archive-grid" class="archive-grid">
-                <!-- Repositories will be injected here via JavaScript -->
-            </div>
-            
-            <div style="text-align: center; margin-top: 50px;">
+            <div id="archive-grid" class="archive-grid"></div>
+
+            <div style="text-align: center; margin-top: 40px;">
                 <a href="https://github.com/Zsubzeroz?tab=repositories" target="_blank" class="btn btn-outline">
-                    <i class="fab fa-github"></i> Ver no GitHub
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    Ver no GitHub
                 </a>
             </div>
         </section>
     </div>
 </div>
-
 
 <div class="container">
     <section id="curriculo" class="section-padding reveal">
@@ -813,14 +1003,16 @@
 
         <div class="resume-container">
             <div class="resume-column">
-                <h3><i class="fas fa-graduation-cap neon-text"></i> Educação</h3>
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                    Educação
+                </h3>
 
                 <div class="resume-item">
                     <span class="resume-date">2025 - Presente</span>
                     <div class="resume-title">Full Stack Python</div>
                     <div class="resume-place">Mate Academy Brasil</div>
-                    <p class="resume-desc">Formação intensiva (+600h) focada em empregabilidade, Python, Django e
-                        Ciência da Computação.</p>
+                    <p class="resume-desc">Formação intensiva (+600h) focada em empregabilidade, Python, Django e Ciência da Computação.</p>
                 </div>
 
                 <div class="resume-item">
@@ -832,107 +1024,121 @@
             </div>
 
             <div class="resume-column">
-                <h3><i class="fas fa-briefcase neon-text"></i> Experiência</h3>
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    Experiência
+                </h3>
 
                 <div class="resume-item">
                     <span class="resume-date">2025 - 2026</span>
-                    <div class="resume-title">Processos Digitais & ERP</div>
+                    <div class="resume-title">Facilitador de Processos Digitais & ERP</div>
                     <div class="resume-place">Ecoflora Brasil</div>
-                    <p class="resume-desc">Facilitação técnica na implantação de softwares e análise de dados
-                        produtivos.</p>
+                    <p class="resume-desc">Liderei a transformação digital de processos manuais. Desenvolvi automações em <strong>Python</strong> e fluxos no <strong>AppSheet</strong> que garantiram 100% de integridade nos dados de produção e reduziram drasticamente o tempo de resposta operacional.</p>
                 </div>
 
                 <div class="resume-item">
                     <span class="resume-date">2023 - 2025</span>
-                    <div class="resume-title">Suporte & Automação</div>
+                    <div class="resume-title">Analista de Suporte & Automação</div>
                     <div class="resume-place">Embrasatec</div>
-                    <p class="resume-desc">Operação de sistema Protheus e automação de planilhas de controle.</p>
+                    <p class="resume-desc">Atuei na linha de frente do <strong>ERP Protheus</strong>. Criei scripts de extração de dados e automação de KPIs em <strong>Python</strong>, eliminando erros humanos em planilhas críticas e otimizando a rastreabilidade de estoque.</p>
                 </div>
             </div>
         </div>
 
         <div class="download-cta">
-            <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Gostou do que viu?</h3>
-            <p style="margin-bottom: 30px; color: var(--text-muted);">
+            <h3 style="margin-bottom: 12px; font-size: 1.25rem; font-weight: 600;">Gostou do que viu?</h3>
+            <p style="margin-bottom: 24px; color: var(--text-muted); font-size: 0.9rem;">
                 Baixe meu currículo completo em PDF para ver detalhes técnicos, certificações e histórico detalhado.
             </p>
-
-            <a href="./assets/docs/CV - Luan Estifer Rodrigues Pereira - Software Engineer.pdf" download class="btn btn-large">
-                <i class="fas fa-file-download"></i> &nbsp; Baixar Currículo (PDF)
+            <a href="./assets/docs/CV - Luan Estifer Rodrigues Pereira - Software Engineer.pdf" download class="btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                Baixar Currículo (PDF)
             </a>
         </div>
-
     </section>
 
     <section class="section-padding reveal">
         <div class="chess-section">
             <div class="chess-text">
-                <span class="chess-badge mono"><i class="fas fa-chess-king"></i> Hobby & Soft Skills</span>
-                <h2 class="section-title" style="margin-bottom: 20px;">O Código e o Tabuleiro</h2>
-                <p style="color: #ccc; font-size: 1.05rem; margin-bottom: 20px;">
+                <span class="chess-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+                    Hobby & Soft Skills
+                </span>
+                <h2 class="section-title" style="margin-bottom: 16px;">O Código e o Tabuleiro</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
                     Para mim, programar é como uma partida de xadrez: exige <strong>antecipação, lógica e
                     estratégia</strong>.
                     Cada função é uma peça que precisa estar no lugar certo para o sistema vencer.
                 </p>
-                <ul style="list-style: none; margin-bottom: 20px;">
-                    <li style="margin-bottom: 10px; color: var(--text-muted);">
-                        <i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i>
-                        Fundador e Líder do <strong>Clube de Xadrez Munhoz</strong> (2021-2023).
-                    </li>
-                    <li style="margin-bottom: 10px; color: var(--text-muted);">
-                        <i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i>
-                        Desenvolvimento de pensamento algorítmico e resolução de problemas sob pressão.
-                    </li>
-                </ul>
-                <p class="mono neon-text" style="font-size: 0.9rem;">
+                <div style="margin-bottom: 16px;">
+                    <div class="checklist-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Fundador e Líder do <strong>Clube de Xadrez Munhoz</strong> (2021-2023).</span>
+                    </div>
+                    <div class="checklist-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Desenvolvimento de pensamento algorítmico e resolução de problemas sob pressão.</span>
+                    </div>
+                </div>
+                <p class="mono accent-text" style="font-size: 0.8rem;">
                     "No xadrez, como na programação, os detalhes definem o resultado."
                 </p>
             </div>
 
             <div class="chess-icon-container">
-                <i class="fas fa-chess-knight"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 22v-4H5v4"/><path d="M5 18V6a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V6a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v4"/><path d="M7 10h10"/></svg>
             </div>
         </div>
     </section>
 
     <section id="contato" class="section-padding reveal">
         <h2 class="section-title">Vamos Conversar?</h2>
-        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 60px; text-align: center; backdrop-filter: blur(10px);">
-            <h3 style="font-size: 2rem; margin-bottom: 20px;">Tem um desafio para mim?</h3>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">
-                Estou sempre em busca de projetos inovadores e colaborações em Engenharia de Software. 
+        <div class="contact-card">
+            <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-weight: 600;">Tem um desafio para mim?</h3>
+            <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto 32px; font-size: 0.95rem;">
+                Estou sempre em busca de projetos inovadores e colaborações em Engenharia de Software.
                 Sinta-se à vontade para entrar em contato!
             </p>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <button onclick="copyEmail()" id="copy-email-btn" class="btn btn-large">
-                    <i class="fas fa-copy"></i> &nbsp; Copiar E-mail
+            <div class="contact-actions">
+                <button onclick="copyEmail()" id="copy-email-btn" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    Copiar E-mail
                 </button>
-                <a href="https://wa.me/5519997222694" target="_blank" class="btn btn-large" style="background: #25d366; color: white;">
-                    <i class="fab fa-whatsapp"></i> &nbsp; WhatsApp
+                <a href="https://wa.me/5519997222694" target="_blank" class="btn btn-whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    WhatsApp
                 </a>
-                <a href="mailto:luanestiferpy@gmail.com" class="btn btn-large btn-outline">
-                    <i class="fas fa-paper-plane"></i> &nbsp; Enviar Direto
+                <a href="mailto:luanestiferpy@gmail.com" class="btn btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    Enviar Direto
                 </a>
-                <a href="https://linkedin.com/in/luanestifer" target="_blank" class="btn btn-large btn-outline">
-                    <i class="fab fa-linkedin"></i> &nbsp; LinkedIn
+                <a href="https://linkedin.com/in/luanestifer" target="_blank" class="btn btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
                 </a>
             </div>
-            <div style="margin-top: 40px; color: var(--text-muted); font-size: 0.9rem;" class="mono">
-                <i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Artur Nogueira, SP &nbsp; | &nbsp; 
-                <i class="fas fa-phone" style="color: var(--accent);"></i> +55 (19) 99722-2694
+            <div class="contact-meta mono">
+                <span style="display: inline-flex; align-items: center; gap: 4px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Artur Nogueira, SP
+                </span>
+                &nbsp;|&nbsp;
+                <span style="display: inline-flex; align-items: center; gap: 4px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +55 (19) 99722-2694
+                </span>
             </div>
         </div>
     </section>
 
     <footer>
-        <div style="margin-bottom: 20px;">
-            <a href="#" style="color: var(--accent); font-size: 1.5rem;"><i class="fas fa-chevron-up"></i></a>
-        </div>
-        <p class="mono">Desenvolvido por Luan Estifer <span style="color: var(--accent);">//</span> 2026</p>
+        <p class="mono" style="font-size: 0.8rem;">Desenvolvido por Luan Estifer <span class="accent-text">//</span> 2026</p>
     </footer>
 </div>
 
 <script>
+    lucide.createIcons();
+
     const projects = [
         { name: "Mario-Jump", desc: "Clássico jogo do Mario com mecânicas de pulo e obstáculos, desenvolvido com HTML/CSS e JS.", tech: ["JavaScript", "Game"], url: "https://github.com/Zsubzeroz/Mario-Jump" },
         { name: "Snake-Game", desc: "O clássico 'jogo da cobrinha' com sistema de pontuação e níveis de velocidade progressivos.", tech: ["JavaScript", "Game"], url: "https://github.com/Zsubzeroz/Snake-Game" },
@@ -957,12 +1163,12 @@
 
     function renderProjects(filter = 'all', search = '') {
         archiveGrid.innerHTML = '';
-        
+
         const filtered = projects.filter(p => {
-            const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase()) || 
+            const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase()) ||
                                  p.desc.toLowerCase().includes(search.toLowerCase()) ||
                                  p.tech.some(t => t.toLowerCase().includes(search.toLowerCase()));
-            
+
             if (filter === 'all') return matchesSearch;
             if (filter === 'Outros') {
                 return matchesSearch && !p.tech.includes('Python') && !p.tech.includes('JavaScript') && !p.tech.includes('Django');
@@ -999,10 +1205,8 @@
         });
     });
 
-    // Initial render
     renderProjects();
 
-    // Scroll Progress Bar
     window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1010,7 +1214,6 @@
         document.getElementById('progress-bar').style.width = scrolled + "%";
     });
 
-    // Reveal Animation
     const reveal = () => {
         const reveals = document.querySelectorAll('.reveal');
         reveals.forEach(el => {
@@ -1023,9 +1226,8 @@
         });
     };
     window.addEventListener('scroll', reveal);
-    reveal(); // Initial check
+    reveal();
 
-    // Typing Effect
     const text = "Luan Estifer |";
     let index = 0;
     const typingText = document.getElementById('typing-text');
@@ -1033,22 +1235,103 @@
         if (index < text.length) {
             typingText.innerHTML += text.charAt(index);
             index++;
-            setTimeout(type, 100);
+            setTimeout(type, 80);
         }
     }
     type();
-    // Copy Email
+
     function copyEmail() {
         const email = "luanestiferpy@gmail.com";
         navigator.clipboard.writeText(email).then(() => {
             const btn = document.querySelector('#copy-email-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> &nbsp; Copiado!';
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copiado!';
             setTimeout(() => {
-                btn.innerHTML = originalText;
+                btn.innerHTML = originalHTML;
             }, 2000);
         });
     }
+
+    // Avatar interativo: o retrato olha para o cursor
+    (function () {
+        const box = document.getElementById('hero-avatar');
+        if (!box) return;
+
+        const poses = Array.prototype.slice.call(box.querySelectorAll('.pose'));
+        const HEAD_X = 0.5;          // centro da cabeça dentro do sprite
+        const HEAD_Y = 0.38;
+        const PARALLAX = 0.035;      // deriva sutil em direção ao cursor
+        const PARALLAX_MAX = 14;
+        const MARGIN = 14;           // folga entre quadrantes (evita troca piscando)
+
+        let mx = null, my = null;    // posição do cursor (viewport)
+        let base = null;             // retângulo do avatar sem o parallax
+        let curX = 0, curY = 0;
+        let current = 'N';
+        let near = false;
+
+        function measure() {
+            const r = box.getBoundingClientRect();
+            base = { x: r.left - curX, y: r.top - curY, w: r.width, h: r.height };
+        }
+
+        function setPose(p) {
+            if (p === current) return;
+            current = p;
+            poses.forEach(el => el.classList.toggle('on', el.dataset.pose === p));
+        }
+
+        function update() {
+            if (!base || mx === null) return;
+            if (base.y > window.innerHeight || base.y + base.h < 0) return;
+
+            const gx = mx - (base.x + base.w * HEAD_X);
+            const gy = my - (base.y + base.h * HEAD_Y);
+            const dist = Math.hypot(gx, gy);
+
+            const tx = Math.max(-PARALLAX_MAX, Math.min(PARALLAX_MAX, gx * PARALLAX));
+            const ty = Math.max(-PARALLAX_MAX, Math.min(PARALLAX_MAX, gy * PARALLAX));
+            if (tx !== curX || ty !== curY) {
+                curX = tx;
+                curY = ty;
+                box.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0)';
+            }
+
+            const deadIn = base.w * 0.18;
+            const deadOut = base.w * 0.26;
+
+            if (near) {
+                if (dist <= deadOut) { setPose('N'); return; }
+                near = false;
+            } else if (dist < deadIn) {
+                near = true;
+                setPose('N');
+                return;
+            }
+
+            const a = (Math.atan2(-gy, gx) * 180 / Math.PI + 360) % 360;
+            if (a >= 315 + MARGIN || a < 45 - MARGIN) setPose('R');
+            else if (a >= 45 + MARGIN && a < 135 - MARGIN) setPose('U');
+            else if (a >= 135 + MARGIN && a < 225 - MARGIN) setPose('L');
+            else if (a >= 225 + MARGIN && a < 315 - MARGIN) setPose('D');
+        }
+
+        window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; update(); }, { passive: true });
+        window.addEventListener('touchmove', e => {
+            const t = e.touches[0];
+            if (t) { mx = t.clientX; my = t.clientY; update(); }
+        }, { passive: true });
+        window.addEventListener('scroll', () => { measure(); update(); }, { passive: true });
+        window.addEventListener('resize', () => { measure(); update(); });
+        window.addEventListener('load', () => { measure(); update(); });
+
+        // o reveal do hero muda o layout (translateY) — realinha depois da animação
+        const hero = document.querySelector('.hero');
+        if (hero) hero.addEventListener('transitionend', () => { measure(); update(); });
+        setTimeout(() => { measure(); update(); }, 700);
+
+        measure();
+    })();
 </script>
 
 </body>
