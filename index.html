@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luan Estifer | Software Engineer & AI Builder</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <style>
@@ -634,6 +635,13 @@
             object-fit: cover;
         }
 
+        .chess-knight {
+            font-size: clamp(4rem, 7vw, 8rem);
+            color: var(--accent);
+            opacity: 0.8;
+            filter: drop-shadow(0 0 12px rgba(204, 17, 0, 0.45));
+        }
+
         .chess-icon-container svg {
             width: 80px;
             height: 80px;
@@ -1095,7 +1103,7 @@
             </div>
 
             <div class="chess-icon-container">
-                <img class="chess-board" src="assets/images/chess_strategy.png" alt="Tabuleiro de xadrez" />
+                <i class="fas fa-chess-knight chess-knight" aria-label="Peça de xadrez"></i>
             </div>
         </div>
     </section>
