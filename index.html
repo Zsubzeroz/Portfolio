@@ -1297,46 +1297,24 @@
         const poses = Array.prototype.slice.call(box.querySelectorAll('.pose'));
         const HEAD_X = 0.5;          // centro da cabeça dentro do sprite
         const HEAD_Y = 0.38;
-        const PARALLAX = 0.035;      // deriva sutil em direção ao cursor
-        const PARALLAX_MAX = 14;
-        const LERP = 0.16;           // suavização do parallax (quadro a quadro)
         const MARGIN = 14;           // folga entre quadrantes (evita troca piscando)
         const NAMES = ['R', 'UR', 'U', 'UL', 'L', 'DL', 'D', 'DR'];
 
         let mx = null, my = null;    // posição do cursor (viewport)
-        let base = null;             // retângulo do avatar sem o parallax
-        let curX = 0, curY = 0;
-        let targetX = 0, targetY = 0;
-        let raf = null;
+        let base = null;             // retângulo do avatar
         let current = 'N';
         let curIdx = 0;              // setor direcional atual (0..7)
         let near = false;
 
         function measure() {
             const r = box.getBoundingClientRect();
-            base = { x: r.left - curX, y: r.top - curY, w: r.width, h: r.height };
+            base = { x: r.left, y: r.top, w: r.width, h: r.height };
         }
 
         function setPose(p) {
             if (p === current) return;
             current = p;
             poses.forEach(el => el.classList.toggle('on', el.dataset.pose === p));
-        }
-
-        function tick() {
-            const dx = targetX - curX;
-            const dy = targetY - curY;
-            if (Math.abs(dx) < 0.05 && Math.abs(dy) < 0.05) {
-                curX = targetX;
-                curY = targetY;
-                box.style.transform = 'translate3d(' + curX + 'px,' + curY + 'px,0)';
-                raf = null;
-                return;
-            }
-            curX += dx * LERP;
-            curY += dy * LERP;
-            box.style.transform = 'translate3d(' + curX + 'px,' + curY + 'px,0)';
-            raf = requestAnimationFrame(tick);
         }
 
         function update() {
@@ -1346,10 +1324,6 @@
             const gx = mx - (base.x + base.w * HEAD_X);
             const gy = my - (base.y + base.h * HEAD_Y);
             const dist = Math.hypot(gx, gy);
-
-            targetX = Math.max(-PARALLAX_MAX, Math.min(PARALLAX_MAX, gx * PARALLAX));
-            targetY = Math.max(-PARALLAX_MAX, Math.min(PARALLAX_MAX, gy * PARALLAX));
-            if (raf === null) raf = requestAnimationFrame(tick);
 
             const deadIn = base.w * 0.18;
             const deadOut = base.w * 0.26;
