@@ -836,6 +836,10 @@
                 <img class="pose" data-pose="D" src="assets/images/avatar/sprite_D.png" alt="" draggable="false">
                 <img class="pose" data-pose="L" src="assets/images/avatar/sprite_L.png" alt="" draggable="false">
                 <img class="pose" data-pose="R" src="assets/images/avatar/sprite_R.png" alt="" draggable="false">
+                <img class="pose" data-pose="UL" src="assets/images/avatar/sprite_UL.png" alt="" draggable="false">
+                <img class="pose" data-pose="UR" src="assets/images/avatar/sprite_UR.png" alt="" draggable="false">
+                <img class="pose" data-pose="DL" src="assets/images/avatar/sprite_DL.png" alt="" draggable="false">
+                <img class="pose" data-pose="DR" src="assets/images/avatar/sprite_DR.png" alt="" draggable="false">
             </div>
         </div>
     </section>
@@ -1280,11 +1284,13 @@
         const PARALLAX = 0.035;      // deriva sutil em direção ao cursor
         const PARALLAX_MAX = 14;
         const MARGIN = 14;           // folga entre quadrantes (evita troca piscando)
+        const NAMES = ['R', 'UR', 'U', 'UL', 'L', 'DL', 'D', 'DR'];
 
         let mx = null, my = null;    // posição do cursor (viewport)
         let base = null;             // retângulo do avatar sem o parallax
         let curX = 0, curY = 0;
         let current = 'N';
+        let curIdx = 0;              // setor direcional atual (0..7)
         let near = false;
 
         function measure() {
@@ -1327,10 +1333,14 @@
             }
 
             const a = (Math.atan2(-gy, gx) * 180 / Math.PI + 360) % 360;
-            if (a >= 315 + MARGIN || a < 45 - MARGIN) setPose('R');
-            else if (a >= 45 + MARGIN && a < 135 - MARGIN) setPose('U');
-            else if (a >= 135 + MARGIN && a < 225 - MARGIN) setPose('L');
-            else if (a >= 225 + MARGIN && a < 315 - MARGIN) setPose('D');
+            const idx = Math.floor((((a + 22.5) % 360) + 360) % 360 / 45) % 8;
+            // setor atual alargado por MARGIN: 8 direções sem zona morta e sem piscar na borda
+            const start = curIdx * 45 - 22.5 - MARGIN;
+            const inside = ((a - start) % 360 + 360) % 360 < 45 + 2 * MARGIN;
+            if (current === 'N' || !inside) {
+                curIdx = idx;
+                setPose(NAMES[idx]);
+            }
         }
 
         window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; update(); }, { passive: true });
