@@ -117,21 +117,15 @@ nav {
     z-index: 0;
 }
 
-.hero-avatar .pose {
+#avatar-pose {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 150ms ease-out;
     z-index: 1;
     pointer-events: none;
     -webkit-mask-image: radial-gradient(closest-side ellipse at 50% 46%, #000 60%, rgba(0, 0, 0, 0.6) 82%, transparent 100%);
     mask-image: radial-gradient(closest-side ellipse at 50% 46%, #000 60%, rgba(0, 0, 0, 0.6) 82%, transparent 100%);
-}
-
-.hero-avatar .pose.on {
-    opacity: 1;
 }
 
 .hero-actions {

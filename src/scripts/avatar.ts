@@ -20,7 +20,8 @@ export function initAvatar(config: AvatarConfig): () => void {
     const box = document.querySelector<HTMLElement>(containerSelector);
     if (!box) return () => {};
 
-    const poses = Array.from(box.querySelectorAll<HTMLImageElement>('.pose'));
+    const poseImage = box.querySelector<HTMLImageElement>('#avatar-pose');
+    if (!poseImage) return () => {};
     let mx: number | null = null;
     let my: number | null = null;
     let base: { x: number; y: number; width: number; height: number } | null = null;
@@ -37,7 +38,7 @@ export function initAvatar(config: AvatarConfig): () => void {
     function setPose(pose: string): void {
         if (pose === current) return;
         current = pose;
-        poses.forEach(el => el.classList.toggle('on', el.dataset.pose === pose));
+        poseImage.src = `assets/images/avatar/sprite_${pose}.png`;
     }
 
     function update(): void {

@@ -192,21 +192,15 @@
             z-index: 0;
         }
 
-        .hero-avatar .pose {
+        #avatar-pose {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 200ms ease-in-out;
             z-index: 1;
             pointer-events: none;
             -webkit-mask-image: radial-gradient(closest-side ellipse at 50% 46%, #000 60%, rgba(0, 0, 0, 0.6) 82%, transparent 100%);
             mask-image: radial-gradient(closest-side ellipse at 50% 46%, #000 60%, rgba(0, 0, 0, 0.6) 82%, transparent 100%);
-        }
-
-        .hero-avatar .pose.on {
-            opacity: 1;
         }
 
         .btn {
@@ -855,15 +849,7 @@
 
             <div class="hero-avatar" id="hero-avatar" role="img" aria-label="Retrato de Luan Estifer seguindo o cursor">
                 <span class="avatar-glow"></span>
-                <img class="pose on" data-pose="N" src="assets/images/avatar/sprite_N.png" alt="" draggable="false">
-                <img class="pose" data-pose="U" src="assets/images/avatar/sprite_U.png" alt="" draggable="false">
-                <img class="pose" data-pose="D" src="assets/images/avatar/sprite_D.png" alt="" draggable="false">
-                <img class="pose" data-pose="L" src="assets/images/avatar/sprite_L.png" alt="" draggable="false">
-                <img class="pose" data-pose="R" src="assets/images/avatar/sprite_R.png" alt="" draggable="false">
-                <img class="pose" data-pose="UL" src="assets/images/avatar/sprite_UL.png" alt="" draggable="false">
-                <img class="pose" data-pose="UR" src="assets/images/avatar/sprite_UR.png" alt="" draggable="false">
-                <img class="pose" data-pose="DL" src="assets/images/avatar/sprite_DL.png" alt="" draggable="false">
-                <img class="pose" data-pose="DR" src="assets/images/avatar/sprite_DR.png" alt="" draggable="false">
+                <img id="avatar-pose" src="assets/images/avatar/sprite_N.png" alt="" draggable="false">
             </div>
         </div>
     </section>
@@ -1302,11 +1288,11 @@
         const box = document.getElementById('hero-avatar');
         if (!box) return;
 
-        const poses = Array.prototype.slice.call(box.querySelectorAll('.pose'));
         const HEAD_X = 0.5;          // centro da cabeça dentro do sprite
         const HEAD_Y = 0.38;
         const MARGIN = 14;           // folga entre quadrantes (evita troca piscando)
         const NAMES = ['R', 'UR', 'U', 'UL', 'L', 'DL', 'D', 'DR'];
+        const poseImage = box.querySelector('#avatar-pose');
 
         let mx = null, my = null;    // posição do cursor (viewport)
         let base = null;             // retângulo do avatar
@@ -1322,7 +1308,7 @@
         function setPose(p) {
             if (p === current) return;
             current = p;
-            poses.forEach(el => el.classList.toggle('on', el.dataset.pose === p));
+            poseImage.src = `assets/images/avatar/sprite_${p}.png`;
         }
 
         function update() {
