@@ -1,0 +1,54 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Luan Estifer | Software Engineer & AI Builder — Transformando dados industriais e processos manuais em automações escaláveis com Python, C# e IA Generativa.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext ts",
+    "format": "prettier --write src",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-portfolio:Zsubzeroz/Portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "software-engineer",
+    "python",
+    "django",
+    "ai"
+  ],
+  "author": "Luan Estifer",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vite-plugin-pwa": "^0.20.5",
+    "vitest": "^2.1.1",
+    "jsdom": "^25.0.0"
+  },
+  "dependencies": {
+    "lucide": "^0.447.0"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

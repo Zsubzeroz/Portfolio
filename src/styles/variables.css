@@ -1,0 +1,48 @@
+:root {
+    --bg-base: #09090b;
+    --bg-panel: #111113;
+    --bg-elevated: #141416;
+    --border: #27272a;
+    --text-main: #fafafa;
+    --text-muted: #a1a1aa;
+    --text-dim: #71717a;
+    --accent: #cc1100;
+    --transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    --font-mono: 'Fira Code', monospace;
+    --font-sans: 'Inter', sans-serif;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 80px;
+
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+
+    --container-max: 1200px;
+    --container-padding: 24px;
+
+    --z-sticky: 900;
+    --z-fixed: 1000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition: 0ms;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -41,6 +41,11 @@
             background: #3f3f46;
         }
 
+        html {
+            background-color: var(--bg-base);
+            overflow-x: hidden;
+        }
+
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
@@ -176,6 +181,7 @@
             aspect-ratio: 1 / 1;
             will-change: transform;
             filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.55));
+            mix-blend-mode: lighten;
         }
 
         .avatar-glow {
@@ -195,6 +201,8 @@
             transition: opacity 200ms ease-in-out;
             z-index: 1;
             pointer-events: none;
+            -webkit-mask-image: radial-gradient(closest-side ellipse at 50% 46%, #000 60%, rgba(0, 0, 0, 0.6) 82%, transparent 100%);
+            mask-image: radial-gradient(closest-side ellipse at 50% 46%, #000 60%, rgba(0, 0, 0, 0.6) 82%, transparent 100%);
         }
 
         .hero-avatar .pose.on {
@@ -891,7 +899,7 @@
     </section>
 </div>
 
-<div style="background-color: #0f0f0f; width: 100%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<div style="width: 100%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
         <section id="projects" class="section-padding reveal">
             <h2 class="section-title">Projetos Selecionados</h2>
